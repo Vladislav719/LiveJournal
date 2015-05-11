@@ -4,6 +4,7 @@ import com.github.gazizovrim.dto.UserRegistrationDTO;
 import com.github.gazizovrim.model.User;
 import com.github.gazizovrim.repository.UserRepository;
 import com.github.gazizovrim.service.UserService;
+import com.github.gazizovrim.util.FormMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +19,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveUser(UserRegistrationDTO userDto) {
-
-
-
-        return null;
+        User user = FormMapper.userDtoToUser(userDto);
+        return userRepository.save(user);
     }
 
     @Override
@@ -31,7 +30,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserByName(String name) {
-        return null;
+        return userRepository.findByLogin(name);
     }
 
     @Override

@@ -1,11 +1,19 @@
 package com.github.gazizovrim.dto;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * Created by vladislav on 10.05.2015.
  */
 public class UserRegistrationDTO {
+
+    @Size(min = 3)
     private String password;
+    @NotNull
     private String confirmPassword;
+    @NotNull
+    @Size(min = 4)
     private String userName;
 
 

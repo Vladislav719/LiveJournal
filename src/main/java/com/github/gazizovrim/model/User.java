@@ -17,7 +17,7 @@ public class User extends BaseEntity{
     private String password;
 
     @Column(name = "real_name")
-    private String realName;
+    private String login;
 
     @OneToMany
     private Set<Post> posts;
@@ -67,12 +67,12 @@ public class User extends BaseEntity{
         this.password = password;
     }
 
-    public String getRealName() {
-        return realName;
+    public String getLogin() {
+        return login;
     }
 
-    public void setRealName(String realName) {
-        this.realName = realName;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public UserRole getRole() {
