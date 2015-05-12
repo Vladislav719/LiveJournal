@@ -21,7 +21,7 @@
   <div class="row">
     <div class="col-md-8">
       <div class="form-group">
-        <input type="text" class="form-control " id="tags" value=""/>
+        <input name="tags" type="text" class="form-control " id="tags" value=""/>
       </div>
     </div>
   </div>
@@ -50,7 +50,7 @@
 //  engine.initialize();
   $('#tags').tokenfield({
     autocomplete: {
-      source: '/app/tags.json',
+      source: '/app/tag/all.json',
       delay: 100
     },
     showAutocompleteOnFocus: false

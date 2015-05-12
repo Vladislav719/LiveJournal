@@ -3,13 +3,14 @@ package com.github.gazizovrim.model;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by vladislav on 10.05.2015.
  */
 @Entity
 @Table(name = "POSTS")
-public class Post extends BaseEntity{
+public class Post extends BaseEntity {
 
     private String title;
     private String text;
@@ -18,10 +19,25 @@ public class Post extends BaseEntity{
     @JoinColumn(name = "user_id")
     private User author;
 
-    @OneToMany(mappedBy = "post")
-    private List<PostTag> postTagList;
+//    @OneToMany(mappedBy = "post")
+//    private List<PostTag> postTagList;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "POST_TAGS", joinColumns = {
+            @JoinColumn(name = "post_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "tag_id", nullable = false, updatable = false)})
+    private Set<Tag> tags;
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
 
     @Override
+
     public Long getId() {
         return super.getId();
     }
@@ -63,13 +79,13 @@ public class Post extends BaseEntity{
         this.text = text;
     }
 
-    public List<PostTag> getPostTagList() {
-        return postTagList;
-    }
-
-    public void setPostTagList(List<PostTag> postTagList) {
-        this.postTagList = postTagList;
-    }
+//    public List<PostTag> getPostTagList() {
+//        return postTagList;
+//    }
+//
+//    public void setPostTagList(List<PostTag> postTagList) {
+//        this.postTagList = postTagList;
+//    }
 
     public User getAuthor() {
         return author;
