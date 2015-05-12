@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!-- Navigation -->
 <jsp:include page="nav.jsp"/>
 
@@ -23,8 +24,11 @@
                 <c:when test="${page == 'auth'}">
                     <jsp:include page="../forms/login.jsp"/>
                 </c:when>
-                <c:when test="${page == 'reg'}">
-                    <%--<jsp:include page="../forms"--%>
+                <c:when test="${page == 'post'}">
+                    <jsp:include page="../forms/add_post.jsp"/>
+                </c:when>
+                <c:when test="${page == 'addPost'}">
+                    <jsp:include page="../forms/post_form.jsp"/>
                 </c:when>
                 <c:otherwise>
                     <jsp:include page="posts.jsp"/>
@@ -44,7 +48,9 @@
 
             <!-- Account Info -->
             <jsp:include page="account_info.jsp"/>
-
+            <sec:authorize access="isAuthenticated()">
+                <jsp:include page="adding_post_control.jsp"/>
+            </sec:authorize>
         </div>
 
     </div>
@@ -56,7 +62,7 @@
     <footer>
         <div class="row">
             <div class="col-lg-12">
-                <p>Copyright &copy; Your Website 2014</p>
+                <p>Copyright &copy; LiveJournal 2015</p>
             </div>
             <!-- /.col-lg-12 -->
         </div>

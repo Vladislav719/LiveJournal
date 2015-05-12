@@ -3,8 +3,10 @@ package com.github.gazizovrim.controller;
 import com.github.gazizovrim.dto.UserRegistrationDTO;
 import com.github.gazizovrim.model.User;
 import com.github.gazizovrim.service.UserService;
+import com.github.gazizovrim.util.SecurityContextUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -33,6 +35,10 @@ public class RegistrationController {
     public String renderRegisterPage(Model model) {
         model.addAttribute("page", "auth");
         return "index";
+    }
+    @RequestMapping("/test")
+    public void testAuth() {
+        SecurityContextUtil.getCurrentUser();
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/register")

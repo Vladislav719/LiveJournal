@@ -13,12 +13,12 @@
         <a class="btn btn-lg btn-success " href="">
             <i class="glyphicon glyphicon-dashboard pull-left"></i><span>Account<br></span></a>
 
-        <a class="btn btn-lg btn-danger" href="<c:url value="/j_spring_security_logout" />">
+        <a class="btn btn-lg btn-danger" href="/logout">
             <i class="glyphicon glyphicon-tasks pull-left"></i><span>Log out<br></span></a>
 
     </sec:authorize>
 </div>
 
 <script>
-    loadCSS('resources/css/acc_info.css');
+    loadCSS('/resources/css/acc_info.css');
 </script>

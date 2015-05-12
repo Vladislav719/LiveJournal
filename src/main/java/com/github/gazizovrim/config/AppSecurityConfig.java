@@ -33,23 +33,28 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .userDetailsService(userDetailsSecurityService);
+                .userDetailsService(userDetailsSecurityService)
+                .passwordEncoder(getShaPasswordEncoder());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+
         http.authorizeRequests()
                 .antMatchers("/resources/**").permitAll()
-                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/app/**").access("hasRole('ROLE_USER')")
-                .antMatchers("/**").anonymous()
+                .antMatchers("/app/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/**").permitAll()
                 .and().formLogin()
                 .loginPage("/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .permitAll().and()
-                .logout().permitAll();
+                .logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/index")
+                    .permitAll();
 
         http.csrf().disable();
 
@@ -62,7 +67,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public ShaPasswordEncoder getShaPasswordEncoder(){
+    public ShaPasswordEncoder getShaPasswordEncoder() {
         return new ShaPasswordEncoder();
     }
 

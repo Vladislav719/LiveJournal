@@ -13,10 +13,11 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!-- Bootstrap Core CSS -->
-<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+
 
 <!-- Custom CSS -->
-<link href="resources/css/blog-home.css" rel="stylesheet">
+<link href="/resources/css/blog-home.css" rel="stylesheet">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,7 +27,7 @@
 <![endif]-->
 
 <!-- jQuery -->
-<script src="resources/js/jquery.js"></script>
+<script src="/resources/js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="/resources/js/bootstrap.min.js"></script>
@@ -46,3 +47,5 @@
   }
 
 </script>
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>

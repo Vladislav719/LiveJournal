@@ -13,7 +13,7 @@ public class UserRegistrationDTO {
     @NotNull
     private String confirmPassword;
     @NotNull
-    @Size(min = 4)
+    @Size(min = 3)
     private String userName;
 
 
