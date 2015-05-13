@@ -1,5 +1,7 @@
 package com.github.gazizovrim.model;
 
+import com.github.gazizovrim.model.enums.PostAccess;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -27,6 +29,9 @@ public class Post extends BaseEntity {
             @JoinColumn(name = "post_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "tag_id", nullable = false, updatable = false)})
     private Set<Tag> tags;
+
+    @Enumerated(EnumType.STRING)
+    private PostAccess postAccess;
 
     public Set<Tag> getTags() {
         return tags;
@@ -65,6 +70,14 @@ public class Post extends BaseEntity {
 
     public String getTitle() {
         return title;
+    }
+
+    public PostAccess getPostAccess() {
+        return postAccess;
+    }
+
+    public void setPostAccess(PostAccess postAccess) {
+        this.postAccess = postAccess;
     }
 
     public void setTitle(String title) {
