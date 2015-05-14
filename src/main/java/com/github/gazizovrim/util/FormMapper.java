@@ -1,10 +1,13 @@
 package com.github.gazizovrim.util;
 
+import com.github.gazizovrim.dto.CommentDTO;
 import com.github.gazizovrim.dto.NewPostDTO;
 import com.github.gazizovrim.dto.UserRegistrationDTO;
+import com.github.gazizovrim.model.Comment;
 import com.github.gazizovrim.model.Post;
 import com.github.gazizovrim.model.Tag;
 import com.github.gazizovrim.model.User;
+import com.github.gazizovrim.model.enums.PostAccess;
 import com.github.gazizovrim.model.enums.UserRole;
 
 import java.util.ArrayList;
@@ -29,6 +32,7 @@ public final class FormMapper {
         post.setText(postDTO.getMessage());
         post.setAuthor(user);
         post.setTitle(postDTO.getTitle());
+        post.setPostAccess(PostAccess.OPEN);
         return post;
     }
 
@@ -41,5 +45,13 @@ public final class FormMapper {
             tags.add(newTag);
         }
         return tags;
+    }
+
+    public static Comment commentDtoToComment(CommentDTO commentDTO, User user, Post post) {
+        Comment comment = new Comment();
+        comment.setText(commentDTO.getText());
+        comment.setAuthor(user);
+        comment.setPost(post);
+        return comment;
     }
 }

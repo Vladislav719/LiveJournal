@@ -12,4 +12,7 @@ public interface PostService {
     List<Post> getAll();
     List<Post> getAllAllowedToUser();
     Post createPost(Post post);
+    boolean deletePost(Post post);
+    Post updatePost(Post post);
+    Post getOnePostById(long id);
 }

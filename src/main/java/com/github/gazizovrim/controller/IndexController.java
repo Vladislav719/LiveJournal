@@ -49,6 +49,10 @@ public class IndexController {
 
     private List<Post> preProccessing(List<Post> posts, User owner) {
         List<Post> res = new ArrayList<>();
+        if (owner != null)
+            if (owner.getRole().equals(UserRole.ADMIN))
+                return posts;
+
         if (owner == null) {
             for (Post post : posts) {
                 if (post.getPostAccess().equals(PostAccess.OPEN))

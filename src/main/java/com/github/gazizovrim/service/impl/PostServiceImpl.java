@@ -14,7 +14,7 @@ import java.util.List;
  * Created by vladislav on 12.05.2015.
  */
 @Service
-public class PostServiceImpl implements PostService{
+public class PostServiceImpl implements PostService {
 
     @Autowired
     private PostRepository postRepository;
@@ -33,7 +33,23 @@ public class PostServiceImpl implements PostService{
     @Transactional
     public Post createPost(Post post) {
 
-        return     postRepository.save(post);
+        return postRepository.save(post);
+    }
+
+    @Override
+    public boolean deletePost(Post post) {
+        postRepository.delete(post);
+        return true;
+    }
+
+    @Override
+    public Post updatePost(Post post) {
+        return postRepository.save(post);
+    }
+
+    @Override
+    public Post getOnePostById(long id) {
+        return postRepository.findOne(id);
     }
 
 }

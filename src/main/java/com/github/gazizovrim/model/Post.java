@@ -15,6 +15,7 @@ import java.util.Set;
 public class Post extends BaseEntity {
 
     private String title;
+    @Column(length = 10000)
     private String text;
 
     @ManyToOne

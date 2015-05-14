@@ -1,26 +1,16 @@
 package com.github.gazizovrim.dto;
 
+import com.github.gazizovrim.model.enums.PostAccess;
+
 import javax.validation.constraints.NotNull;
 
 /**
- * Created by vladislav on 12.05.2015.
+ * Created by vladislav on 14.05.2015.
  */
-public class NewPostDTO {
-
-    @NotNull
+public class updatePost {
     private String title;
-    @NotNull
     private String message;
-    private String tags;
-
-    public NewPostDTO(String title, String message, String tags) {
-        this.title = title;
-        this.message = message;
-        this.tags = tags;
-    }
-
-    public NewPostDTO() {
-    }
+    private PostAccess postAccess;
 
     public String getTitle() {
         return title;
@@ -38,11 +28,11 @@ public class NewPostDTO {
         this.message = message;
     }
 
-    public String getTags() {
-        return tags;
+    public PostAccess getPostAccess() {
+        return postAccess;
     }
 
-    public void setTags(String tags) {
-        this.tags = tags;
+    public void setPostAccess(PostAccess postAccess) {
+        this.postAccess = postAccess;
     }
 }

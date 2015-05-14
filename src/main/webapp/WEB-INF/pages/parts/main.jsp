@@ -21,6 +21,9 @@
                 <c:when test="${page == 'allPosts'}">
                     <jsp:include page="posts.jsp"/>
                 </c:when>
+                <c:when test="${page == 'onePost'}">
+                    <jsp:include page="a_post.jsp"/>
+                </c:when>
                 <c:when test="${page == 'auth'}">
                     <jsp:include page="../forms/login.jsp"/>
                 </c:when>
@@ -29,6 +32,9 @@
                 </c:when>
                 <c:when test="${page == 'addPost'}">
                     <jsp:include page="../forms/post_form.jsp"/>
+                </c:when>
+                <c:when test="${page == 'postEdit'}">
+                    <jsp:include page="../forms/update_post.jsp"/>
                 </c:when>
                 <c:otherwise>
                     <jsp:include page="posts.jsp"/>
